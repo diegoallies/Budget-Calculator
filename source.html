@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Budget Calculator</title>
+<link rel="stylesheet" type="text/css" href="budgetStyle.css">
+</head>
+
+<body>
+
+    <script src="budget.js"></script>
+
+    <div class="bigTitle" id="bigTitle">
+        <h1 id="budgetSum">Available budget : 0</h1>
+    </div>
+
+    <div class="addItem" id="properties">
+        <div id="necessities">
+            <div>Spent on Necessities: 0</div>
+            <div>Optional Spendings: 0</div>
+        </div>
+
+    </div>
+
+    <div class="addItem">
+        Add income:<input type="text" id="newIncomeSource" autofocus placeholder="Source">
+        <input type="text" id="newIncomeSum" placeholder="Sum">
+        <button onclick="getNewIncome()">Add</button> 
+    </div>
+
+    <div class="addItem">
+        Add expense: <input type="text" id="newExpenseSource" placeholder="Source">
+        <input type="text" id="newExpenseSum" placeholder="Sum">
+        <select id="isNecessary">
+            <option>Necessary</option>
+            <option>Optional</option>
+        </select>
+        <button onclick="getNewExpense()">Add</button>
+    </div>
+
+    <div class="categories">
+
+        <div class="column" id="income">
+            <h2 class="smallTitle">Incomes</h2>
+            <table id="incomeTable">
+                <td>Name</td>
+                <td>Sum</td>
+            </table>
+        </div>
+
+        <div class="column" id="expense">
+            <h2 class="smallTitle">
+                Expenses
+            </h2>
+
+            <table id="expensesTable">
+                <td>Name</td>
+                <td>Sum</td>
+                <td>Necessity</td>
+            </table>
+        </div>   
+    </div>
+
+
+</body>
+
+</html>
