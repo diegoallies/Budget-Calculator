@@ -7,9 +7,7 @@
 </head>
 
 <body>
-
     <script src="budget.js"></script>
-
     <div class="bigTitle" id="bigTitle">
         <h1 id="budgetSum">Available budget : 0</h1>
     </div>
@@ -18,6 +16,23 @@
         <div id="necessities">
             <div>Spent on Necessities: 0</div>
             <div>Optional Spendings: 0</div>
+        </div>
+
+    </div>
+
+    <div class="addItem" id="currency">
+        <div id="calculateCurrencies">
+            <div>
+                Exchange <input type="text" id="currencySum" placeholder="Sum" onchange="convertToCurrency()">
+                <select id="currencyToChange" onchange="convertToCurrency()">
+                    <option>EUR</option>
+                </select>
+                to <select id="currencyToChangeTo" onchange="convertToCurrency()"> 
+                        <option>EUR</option>
+                    </select>
+                <input type="text" placeholder="Result" readonly id="convertCurrencyResult" style="background-color: rgb(223, 224, 224);">
+
+            </div>
         </div>
 
     </div>
@@ -60,8 +75,6 @@
             </table>
         </div>   
     </div>
-
-
 </body>
 
 </html>
