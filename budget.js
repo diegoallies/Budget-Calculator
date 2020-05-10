@@ -1,5 +1,6 @@
-        
-        // global variables
+       // global variables
+        let currency_names = ["EUR"];
+        let currency_values = [1];
         let name_incomes = [];
         let sum_incomes = [];
         let name_expenses = [];
@@ -7,7 +8,66 @@
         let expense_necessity = [];
         let index_income = 1;
         let index_expense = 1;
+ 
+        // Gets data from the API
+        async function getAPIConvertRate() {
+            let response = await fetch('https://api.exchangeratesapi.io/latest');
+            let data = await response.json();
+            return data;
+        }
+
+        // API call + saving the data
+        getAPIConvertRate().then(data => {
+            
+            Object.entries(data.rates).forEach(([key, value]) => {
+                currency_names.push(key);
+                currency_values.push(value);
+             });
+             printCurrencies();
+        });
         
+        // Show currencies in HTML
+        function printCurrencies(){
+
+            aux_innerhtml = '';
+            for( i = 0 ; i < currency_names.length ; i++){
+                
+                aux_innerhtml += `<option>${currency_names[i]}</option>`
+            } 
+            document.getElementById("currencyToChange").innerHTML = aux_innerhtml;
+            document.getElementById("currencyToChangeTo").innerHTML = aux_innerhtml;
+        }
+
+        // Convert sum to the desired currency
+        function convertToCurrency() {
+
+            let indexChange1 = currency_names.indexOf(document.getElementById("currencyToChange").value);
+            let indexChange2 = currency_names.indexOf(document.getElementById("currencyToChangeTo").value);    
+            let sum = document.getElementById("currencySum").value;
+            
+            if( sum.length == 0 ) {
+
+                let result = document.getElementById("convertCurrencyResult");
+                result.value = ''
+
+            } else {
+
+                if(isNaN(sum)) {
+
+                    let result = document.getElementById("convertCurrencyResult");
+                    result.value = 'NaN'
+
+                } else {
+
+                    let result = document.getElementById("convertCurrencyResult");
+
+                    sum = parseFloat(sum / currency_values[indexChange1]); // in euro
+                    sum = parseFloat(sum * currency_values[indexChange2]);
+                    sum = Math.round((sum + Number.EPSILON) * 100) / 100; 
+                    result.value = sum;
+                }
+            }
+        }
 
         // adds a new income
         function getNewIncome() {
