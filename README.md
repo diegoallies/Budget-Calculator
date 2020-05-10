@@ -12,4 +12,4 @@ Features:
     
 Hosted on: 
         
-        https://alike-button-quartz.glitch.me/source.html
+        https://budget-calculator.glitch.me/source.html
