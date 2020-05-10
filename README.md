@@ -7,6 +7,7 @@ Features:
         Dynamic Tables for Incomes and Expenses
         Option to Eliminate Expenses and Incomes using the "X" Button
         Dynamic Update of Buget and Expenses Statistics
+        Convertor from One to Another Desired Currency
         Attractive and User-Friendly Interface
     
     
